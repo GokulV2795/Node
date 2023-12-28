@@ -1,0 +1,11 @@
+steps:
+# Build the Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/absolute-cache-409313/guessing-game:$COMMIT_SHA', '.']
+
+# Push the Docker image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/absolute-cache-409313/guessing-game:$COMMIT_SHA']
+
+images:
+- 'gcr.io/absolute-cache-409313/guessing-game:$COMMIT_SHA'
